@@ -7,6 +7,8 @@ from rich.progress import track
 from TTS.engine_wrapper import process_text
 
 
+
+
 def draw_multiple_line_text(
     image, text, font, text_color, padding, wrap=50, transparent=False
 ) -> None:
@@ -50,32 +52,68 @@ def draw_multiple_line_text(
         draw.text(((image_width - line_width) / 2, y), line, font=font, fill=text_color)
         y += line_height + padding
 
-
-def imagemaker(theme, reddit_obj: dict, txtclr, padding=5, transparent=False) -> None:
+def imagemaker(theme, reddit_obj: dict, txtclr, background_image_path, padding=5, transparent=True) -> None:
     """
-    Render Images for video
+    Render Images for video with the given background.
     """
     title = process_text(reddit_obj["thread_title"], False)
     texts = reddit_obj["thread_post"]
     id = re.sub(r"[^\w\s-]", "", reddit_obj["thread_id"])
 
+    # Fonts settings remain the same
     if transparent:
         font = ImageFont.truetype(os.path.join("fonts", "Roboto-Bold.ttf"), 100)
         tfont = ImageFont.truetype(os.path.join("fonts", "Roboto-Bold.ttf"), 100)
     else:
         tfont = ImageFont.truetype(os.path.join("fonts", "Roboto-Bold.ttf"), 100)  # for title
         font = ImageFont.truetype(os.path.join("fonts", "Roboto-Regular.ttf"), 100)
-    size = (1920, 1080)
 
-    image = Image.new("RGBA", size, theme)
+    # Open the uploaded background image
+    background_image = Image.open("assets/backgrounds/redditEmpty.png")
 
-    # for title
-    draw_multiple_line_text(image, title, tfont, txtclr, padding, wrap=30, transparent=transparent)
+    # For title - draw on the background image
+    draw_multiple_line_text(background_image, title, tfont, txtclr, padding, wrap=30, transparent=transparent)
+    # Create a directory for the images if it does not exist
+    os.makedirs(f"assets/temp/{id}/png", exist_ok=True)
+    background_image.save(f"assets/temp/{id}/png/title.png")
 
-    image.save(f"assets/temp/{id}/png/title.png")
-
+    # For each text block in the Reddit post
     for idx, text in track(enumerate(texts), "Rendering Image"):
-        image = Image.new("RGBA", size, theme)
+        # Reload the background image for each text block to avoid overwriting
+        image = Image.open(background_image_path)
         text = process_text(text, False)
         draw_multiple_line_text(image, text, font, txtclr, padding, wrap=30, transparent=transparent)
         image.save(f"assets/temp/{id}/png/img{idx}.png")
+
+# Usage example:
+# imagemaker(reddit_obj, txtclr='black', background_image_path='/mnt/data/Reddit Empty.png')
+
+
+# def imagemaker(theme, reddit_obj: dict, txtclr, padding=5, transparent=False) -> None:
+#     """
+#     Render Images for video
+#     """
+#     title = process_text(reddit_obj["thread_title"], False)
+#     texts = reddit_obj["thread_post"]
+#     id = re.sub(r"[^\w\s-]", "", reddit_obj["thread_id"])
+
+#     if transparent:
+#         font = ImageFont.truetype(os.path.join("fonts", "Roboto-Bold.ttf"), 100)
+#         tfont = ImageFont.truetype(os.path.join("fonts", "Roboto-Bold.ttf"), 100)
+#     else:
+#         tfont = ImageFont.truetype(os.path.join("fonts", "Roboto-Bold.ttf"), 100)  # for title
+#         font = ImageFont.truetype(os.path.join("fonts", "Roboto-Regular.ttf"), 100)
+#     size = (1920, 1080)
+
+#     image = Image.new("RGBA", size, theme)
+
+#     # for title
+#     draw_multiple_line_text(image, title, tfont, txtclr, padding, wrap=30, transparent=transparent)
+
+#     image.save(f"assets/temp/{id}/png/title.png")
+
+#     for idx, text in track(enumerate(texts), "Rendering Image"):
+#         image = Image.new("RGBA", size, theme)
+#         text = process_text(text, False)
+#         draw_multiple_line_text(image, text, font, txtclr, padding, wrap=30, transparent=transparent)
+#         image.save(f"assets/temp/{id}/png/img{idx}.png")

@@ -1,0 +1,234 @@
+###############################
+#                             #
+# Checking TOML configuration #
+#                             #
+###############################
+If you see any prompts, that means that you have unset/incorrectly set variables, please input the correct values.
+The ID of your Reddit app of SCRIPT type
+Example: fFAGRNJru1FTz70BzhT3Zg
+Non-optional client_id=
+The client ID can only contain printable characters.
+Are you absolutely sure it's correct?(y/n)
+y
+The SECRET of your Reddit app of SCRIPT type
+Example: fFAGRNJru1FTz70BzhT3Zg
+Non-optional client_secret=fPes2w_QSNmmWLyCRbJFmSXX0qFtgg
+The username of your reddit account
+Example: JasonLovesDoggo
+Non-optional username=thechamp488
+The password of your reddit account
+Example: fFAGRNJru1FTz70BzhT3Zg
+Non-optional password=Redditstories1!
+Example: True
+Optional 2fa=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: True
+Optional random=
+This is an optional value. Do you want to skip it? (y/n)
+y
+What subreddit to pull posts from, the name of the sub, not the URL. You can have multiple subreddits, add an + with no spaces.
+Example: AskReddit+Redditdev
+Non-optional subreddit=relationship_advice+relationships+relationshipproblems
+Example: urdtfx
+Optional post_id=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 500
+Non-optional max_comment_length=
+The default value is "500"
+Do you want to use it?(y/n)
+y
+Example: 50
+Optional min_comment_length=
+This is an optional value. Do you want to skip it? (y/n)
+n
+Example: 50
+Optional min_comment_length=
+The default value is "1"
+Do you want to use it?(y/n)
+100
+min_comment_length number of characters a comment can have. default is 0
+Example: 50
+Optional min_comment_length=100
+Example: es-cr
+Optional post_lang=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 29
+Non-optional min_comments=
+The default value is "20"
+Do you want to use it?(y/n)
+n
+The minimum number of comments a post should have to be included. default is 20
+Example: 29
+Non-optional min_comments=35
+Optional ai_similarity_enabled=
+This is an optional value. Do you want to skip it? (y/n)
+n
+Optional ai_similarity_enabled=
+The default value is "False"
+Do you want to use it?(y/n)
+True
+Threads read from Reddit are sorted based on their similarity to the keywords given below
+Optional ai_similarity_enabled=True
+Example: Elon Musk, Twitter, Stocks
+Optional ai_similarity_keywords=
+This is an optional value. Do you want to skip it? (y/n)
+psycho, ex, divorce, cheating, problem, crazy, inlaw
+Every keyword or even sentence, seperated with comma, is used to sort the reddit threads based on similarity
+Example: Elon Musk, Twitter, Stocks
+Optional ai_similarity_keywords=psycho, ex, divorce, cheating, problem, crazy, inlaw
+Example: False
+Non-optional allow_nsfw=
+The default value is "False"
+Do you want to use it?(y/n)
+y
+Example: light
+Non-optional theme=
+The default value is "dark"
+Do you want to use it?(y/n)
+y
+Example: 2
+Non-optional times_to_run=
+The default value is "1"
+Do you want to use it?(y/n)
+n
+Used if you want to run multiple times. Set to an int e.g. 4 or 29 or 1
+Example: 2
+Non-optional times_to_run=4
+Example: 0.8
+Non-optional opacity=
+The default value is "0.9"
+Do you want to use it?(y/n)
+y
+Example: False
+Optional storymode=
+This is an optional value. Do you want to skip it? (y/n)
+n
+Example: False
+Optional storymode=
+The default value is "False"
+Do you want to use it?(y/n)
+y
+Example: 1
+Optional storymodemethod=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 1000
+Optional storymode_max_length=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 1440
+Non-optional resolution_w=
+The default value is "1080"
+Do you want to use it?(y/n)
+y
+Example: 2560
+Non-optional resolution_h=
+The default value is "1920"
+Do you want to use it?(y/n)
+y
+Example: 1.1
+Optional zoom=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: rocket-league
+Optional background_video=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: chill-summer
+Optional background_audio=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 0.05
+Optional background_audio_volume=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: False
+Optional enable_extra_audio=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: False
+Optional background_thumbnail=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: arial
+Optional background_thumbnail_font_family=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 96
+Optional background_thumbnail_font_size=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 255,255,255
+Optional background_thumbnail_font_color=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: tiktok
+Non-optional voice_choice=
+The default value is "tiktok"
+Do you want to use it?(y/n)
+y
+Example: True
+Non-optional random_voice=
+The default value is "True"
+Do you want to use it?(y/n)
+y
+Example: Bella
+Non-optional elevenlabs_voice_name=
+The default value is "Bella"
+Do you want to use it?(y/n)
+y
+Example: 21f13f91f54d741e2ae27d2ab1b99d59
+Optional elevenlabs_api_key=
+This is an optional value. Do you want to skip it? (y/n)
+n
+Elevenlabs API key
+Example: 21f13f91f54d741e2ae27d2ab1b99d59
+Optional elevenlabs_api_key=c057b6332f8efa87ce9f1aaef553aa49
+Example: Matthew
+Non-optional aws_polly_voice=
+The default value is "Matthew"
+Do you want to use it?(y/n)
+y
+Example: Matthew
+Non-optional streamlabs_polly_voice=
+The default value is "Matthew"
+Do you want to use it?(y/n)
+y
+Example: en_us_006
+Optional tiktok_voice=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: c76bcc3a7625abcc27b508c7db457ff1
+Optional tiktok_sessionid=
+This is an optional value. Do you want to skip it? (y/n)
+y
+Example: 1
+Non-optional python_voice=
+The default value is "1"
+Do you want to use it?(y/n)
+y
+Example: 2
+Non-optional py_voice_num=
+The default value is "2"
+Do you want to use it?(y/n)
+y
+Example: 0.1
+Optional silence_duration=
+This is an optional value. Do you want to skip it? (y/n)
+n
+Example: 0.1
+Optional silence_duration=
+The default value is "0.3"
+Do you want to use it?(y/n)
+y
+Example: False
+Non-optional no_emojis=
+The default value is "False"
+Do you want to use it?(y/n)
+y
+TikTok voice requires a sessionid! Check our documentation on how to obtain one.
+(your_env_name) PS C:\Users\George Work\GitHub\RedditVideoMakerBot> python main.py
+Using region Ontario server backend.

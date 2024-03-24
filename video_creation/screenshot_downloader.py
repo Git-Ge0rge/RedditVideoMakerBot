@@ -63,10 +63,16 @@ def get_screenshots_of_reddit_posts(reddit_object: dict, screenshot_num: int):
     if storymode and settings.config["settings"]["storymodemethod"] == 1:
         # for idx,item in enumerate(reddit_object["thread_post"]):
         print_substep("Generating images...")
+        
+        # Define the path to the background image that you want to use.
+        background_image_path = "assets/backgrounds/redditEmpty.png"  # Change to the actual path where the background image is stored.
+
         return imagemaker(
             theme=bgcolor,
             reddit_obj=reddit_object,
             txtclr=txtcolor,
+            background_image_path=background_image_path,  # Add this line to pass the background image path to the function.
+            padding=4,  # You can adjust the padding if needed.
             transparent=transparent,
         )
 
@@ -75,7 +81,7 @@ def get_screenshots_of_reddit_posts(reddit_object: dict, screenshot_num: int):
         print_substep("Launching Headless Browser...")
 
         browser = p.chromium.launch(
-            headless=True
+            headless=False
         )  # headless=False will show the browser for debugging purposes
         # Device scale factor (or dsf for short) allows us to increase the resolution of the screenshots
         # When the dsf is 1, the width of the screenshot is 600 pixels
@@ -100,9 +106,9 @@ def get_screenshots_of_reddit_posts(reddit_object: dict, screenshot_num: int):
         page.set_viewport_size(ViewportSize(width=1920, height=1080))
         page.wait_for_load_state()
 
-        page.locator('[name="username"]').fill(settings.config["reddit"]["creds"]["username"])
-        page.locator('[name="password"]').fill(settings.config["reddit"]["creds"]["password"])
-        page.locator("button[class$='m-full-width']").click()
+        page.locator(f'input[name="username"]').fill(settings.config["reddit"]["creds"]["username"])
+        page.locator(f'input[name="password"]').fill(settings.config["reddit"]["creds"]["password"])
+        page.get_by_role("button", name="Log In").click()
         page.wait_for_timeout(5000)
 
         login_error_div = page.locator(".AnimatedForm__errorMessage").first
